@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Header} from './partials/Header';
-import {ShowGrid} from './shows/ShowGrid';
-import {SingleShow} from './shows/SingleShow';
-import {shows} from '../services/ShowsService';
+import { Header } from './partials/Header';
+import { ShowGrid } from './shows/ShowGrid';
+import { SingleShow } from './shows/SingleShow';
+import { shows, singleShow } from '../services/DataService';
+import { API_URL } from '../constants/constants'
 
 
 class App extends Component {
@@ -20,12 +21,16 @@ class App extends Component {
   }
 
   componentDidMount() {
-    shows.getData()
-      .then((res) => this.setState({showsData: res}))
+    shows.getData(API_URL)
+      .then((res) => this.setState({ showsData: res }))
   }
 
   showSingleShow(event) {
-    this.setState({grid: false})
+    singleShow.getData(API_URL, event.target.id)
+      .then(res => {
+        console.log(res);
+        this.setState({ grid: false, singleShow: res })
+      })
     console.log('clicked', event.target.id);
   }
 
@@ -33,7 +38,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header searchDropDown={this.searchDropDown} action={this.showSingleShow} dropDown={this.state.dropDownSearchResults} />
-        {(this.state.grid) ? (<ShowGrid data={this.state.showsData} action={this.showSingleShow}/>):(<SingleShow data={this.state.singleShow} />)}
+        {(this.state.grid) ? (<ShowGrid data={this.state.showsData} action={this.showSingleShow} />) : (<SingleShow data={this.state.singleShow} />)}
       </React.Fragment>
     );
   }
