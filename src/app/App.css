@@ -1,47 +1,24 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .container-fluid nav .navbar-brand {
   color: whitesmoke; }
 .container-fluid .row {
   max-width: 960px;
-  margin: 0 auto; }
-  .container-fluid .row div {
-    padding-top: 10px; }
-    .container-fluid .row div .card {
-      padding: 0; }
-      .container-fluid .row div .card:hover {
-        cursor: pointer; }
+  margin: 0 auto; 
+}
+.container-fluid .row div {
+  padding-top: 10px; 
+}
+.container-fluid .row div .card {
+  padding: 0; 
+}
+.container-fluid .row div .card:hover {
+  cursor: pointer; 
+}
 
 #big {
-  width: 100%; }
+  width: 100%; 
+}
 
 div.seasons > ul, div.crew > ul, div.cast > ul {
   list-style: none;
-  padding: 0; }
+  padding: 0; 
+}
