@@ -13,7 +13,24 @@
 .container-fluid .row div .card:hover {
   cursor: pointer; 
 }
+.right.input-field {
+  position: relative;
+  width: 30%;
+}
 
+.dropUl {
+  width: 100%;
+  position: absolute;
+  top: 72px;
+  background-color: rgba(38, 50, 56, 0.67);
+  z-index: 10000;
+  padding-left: 10%;
+  font-size: 1.2rem;
+}
+p.drop {
+  display:block;
+  padding: 0, 20px, 0, 20px;
+}
 #big {
   width: 100%; 
 }
@@ -21,4 +38,15 @@
 div.seasons > ul, div.crew > ul, div.cast > ul {
   list-style: none;
   padding: 0; 
+}
+
+.nav-wrapper {
+  padding-left: 9%;
+}
+a.brand-logo {
+  color: whitesmoke;
+}
+div.card-content>p {
+  height: 1.5em;
+  overflow: hidden;
 }

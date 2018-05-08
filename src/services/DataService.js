@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 import Show from '../models/Show'
 import SingleShow from '../models/SingleShow'
 import Actor from '../models/Actor'
@@ -5,16 +7,18 @@ import CrewMember from '../models/CrewMember'
 import Episode from '../models/Episode'
 import Aka from '../models/Aka'
 import Season from '../models/Season'
-import axios from 'axios'
 
 
 class FetchShows{
-    async getData(url) {
+    async getData(url, showsPresented) {
         const response = await axios(url)
-                console.log(response);
                 return (result => { 
-                    result.splice(50);
-                    return result.map(show => new Show (show.name, show.image.medium, show.id))
+                    result.splice(showsPresented);
+                    
+                    return result.map(show => {
+                        if (show.name) return new Show (show.name, show.image.medium, show.id)
+                        else return new Show (show.show.name, undefined, show.show.id)
+                    })
                 })(response.data)
     }
 }

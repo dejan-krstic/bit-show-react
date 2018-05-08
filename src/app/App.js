@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
+import { Switch, Router, Route } from 'react-router-dom'
+
 import './App.css';
 import { Header } from './partials/Header';
 import { ShowGrid } from './shows/ShowGrid';
-import { SingleShow } from './shows/SingleShow';
+import SingleShow from './shows/SingleShow';
 import { shows, singleShow } from '../services/DataService';
-import { API_URL } from '../constants/constants'
+import { API_URL, API_SEARCH } from '../constants/constants';
 
 
 class App extends Component {
@@ -13,32 +16,59 @@ class App extends Component {
     this.state = {
       showsData: [],
       singleShow: null,
-      dropDownSearchResults: [],
+      dropDownResults: [],
       grid: true,
+      searchValue: ''
 
     }
-    this.showSingleShow = this.showSingleShow.bind(this)
+    // this.showSingleShow = this.showSingleShow.bind(this)
   }
 
   componentDidMount() {
-    shows.getData(API_URL)
-      .then((res) => this.setState({ showsData: res }))
+    shows.getData(API_URL, 50)
+      .then(res => this.setState({ showsData: res }))
   }
 
-  showSingleShow(event) {
-    singleShow.getData(API_URL, event.target.id)
+  // showSingleShow(event) {
+  //   console.log(event.target.id)
+  //   singleShow.getData(API_URL, event.target.id)
+  //     .then(res => this.setState({ singleShow: res }))
+  // }
+
+  searchDebounce = _.debounce((value) => {
+    shows.getData(API_SEARCH + value, 10)
       .then(res => {
+        console.log(API_SEARCH + value);
         console.log(res);
-        this.setState({ grid: false, singleShow: res })
+        this.setState({ dropDownResults: res })
       })
-    console.log('clicked', event.target.id);
-  }
+  }, 900)
 
+  searchShows = ({ target: { value } }) => {
+    this.searchDebounce(value)
+    this.setState({ searchValue: value })
+  }
   render() {
+    console.log(this.state.dropDownResults);
     return (
       <React.Fragment>
-        <Header searchDropDown={this.searchDropDown} action={this.showSingleShow} dropDown={this.state.dropDownSearchResults} />
-        {(this.state.grid) ? (<ShowGrid data={this.state.showsData} action={this.showSingleShow} />) : (<SingleShow data={this.state.singleShow} />)}
+
+        <Header
+          dropDown={this.state.dropDownResults}
+          searchShows={this.searchShows}
+          searchValue={this.state.searchValue}
+          clearSearch={() => this.setState({ searchValue: '', dropDownResults: [] })}
+        />
+        <Switch>
+          <Route
+            exact path="/show/:showId"
+            render={props => <SingleShow {...props} data={this.state.singleShow} />}
+          />
+        <Route
+          exact path="/"
+          render={props => <ShowGrid {...props} data={this.state.showsData} action={this.showSingleShow} />}
+          />
+          </Switch>
       </React.Fragment>
     );
   }
