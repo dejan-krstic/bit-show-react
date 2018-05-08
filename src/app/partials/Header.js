@@ -7,7 +7,7 @@ export const Header = (props) => {
         <div className="navbar-fixed">
             <nav >
                 <div className="nav-wrapper blue-grey darken-4">
-                    <a className="brand-logo" href="/">BitShow</a>
+                    <Link to={'/'} className="brand-logo" href="/">BitShow</Link>
                     <div className="right input-field">
                         <i className="material-icons prefix">search</i>
                         <input onChange={props.searchShows} id="search" type="text" placeholder="Search for shows" value={props.searchValue}  />
