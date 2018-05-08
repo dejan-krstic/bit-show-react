@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export const Header = (props) => {
-    console.log(props.searchValue);
 
     return (
         <div className="navbar-fixed">
@@ -22,4 +21,3 @@ export const Header = (props) => {
     )
 }
 
-// value={props.target} onClick={props.clearSearch} onBlur="this.value=''"

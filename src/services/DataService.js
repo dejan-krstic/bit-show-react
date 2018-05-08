@@ -80,7 +80,6 @@ class FetchSingleShow {
 
     async getData(url,id) {
         const response = await axios(`${url}/${id}?embed[]=seasons&embed[]=episodes&embed[]=cast&embed[]=crew&embed[]=akas`)
-                console.log(response);
                 return (showResponse => { 
                         var singleShowObj = this.createSingleShow(showResponse.name,showResponse.image.medium, showResponse.id, showResponse.summary);
                         this.showSeasons(showResponse, singleShowObj);

@@ -21,7 +21,7 @@ class App extends Component {
       searchValue: ''
 
     }
-    // this.showSingleShow = this.showSingleShow.bind(this)
+
   }
 
   componentDidMount() {
@@ -29,27 +29,19 @@ class App extends Component {
       .then(res => this.setState({ showsData: res }))
   }
 
-  // showSingleShow(event) {
-  //   console.log(event.target.id)
-  //   singleShow.getData(API_URL, event.target.id)
-  //     .then(res => this.setState({ singleShow: res }))
-  // }
 
   searchDebounce = _.debounce((value) => {
     shows.getData(API_SEARCH + value, 10)
       .then(res => {
-        console.log(API_SEARCH + value);
-        console.log(res);
         this.setState({ dropDownResults: res })
       })
-  }, 900)
+  }, 300)
 
   searchShows = ({ target: { value } }) => {
     this.searchDebounce(value)
     this.setState({ searchValue: value })
   }
   render() {
-    console.log(this.state.dropDownResults);
     return (
       <React.Fragment>
 
