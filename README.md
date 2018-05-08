@@ -1,7 +1,7 @@
 # Bit Show - React
 
 BitShow is a Single Page Application built using React, where you can search for existing TV shows or take a look at featured ones. Data provided by tvmaze.com. Fully responsive with Materialize. 
-Done days after BIT course, Bit Show is actually a refactored version of the same project built few weeks before with Revealing Module pattern, jQuery and Bootstrap.
+Done days after BIT course, Bit Show is actually a refactored version of the same project built few weeks before with Revealing Module Pattern, jQuery and Bootstrap.
 
 Feel free to check out the project here: [Bit Show](https://dejan-krstic.github.io/bit-show-react/) 
 
