@@ -8,6 +8,7 @@ Feel free to check out the project here: [Bit Show](https://dejan-krstic.github.
 ## Showcasing
 - React.js
 - RESTFul API
+- Debounced search
 - Separation of concerns
 - Passing data through multiple layers, both ways
 - Stateful and Stateless components
