@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { Switch, Router, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import './App.css';
 import { Header } from './partials/Header';
 import { ShowGrid } from './shows/ShowGrid';
 import SingleShow from './shows/SingleShow';
-import { shows, singleShow } from '../services/DataService';
+import { shows } from '../services/DataService';
 import { API_URL, API_SEARCH } from '../constants/constants';
 
 

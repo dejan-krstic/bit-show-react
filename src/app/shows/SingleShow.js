@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash'
+
 import { singleShow } from '../../services/DataService'
 import { API_URL, LOADER_URL } from '../../constants/constants';
 
